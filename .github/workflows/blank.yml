@@ -45,8 +45,9 @@ jobs:
             --env NEO4J_PLUGINS=\[\"apoc\"\] \
             neo4j:latest
           docker ps
-          # Step 5: Stop the docker container
-          docker stop  uns_mqtt
-          docker stop  uns_graphdb       
+          # Step 5: Stop the docker container    
           netstat -ntpl
           ifconfig
+          docker ps
+          docker stop  uns_mqtt
+          docker stop  uns_graphdb   
