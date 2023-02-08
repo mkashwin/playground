@@ -32,7 +32,7 @@ jobs:
           apoc.export.file.enabled: true
           apoc.import.file.enabled: true
           apoc.import.file.use_neo4j_config: true
-          NEO4J_PLUGINS: \[\"apoc\"\]
+          NEO4J_PLUGINS: \["apoc"\]
     # Map a step output to a job output
     outputs:
       output1: ${{ steps.step1.outputs.test }}
@@ -47,13 +47,11 @@ jobs:
           netstat -ntpl
           ifconfig
           docker ps
-          echo ${{ env.UNS_mqtt.host }} ${{ env.UNS_mqtt.port }} ${{ env.UNS_graphdb.url }}
-
-          nc -zv uns_graphdb 7687       
-          nc -zv uns_mqtt ${{ env.UNS_mqtt.port }}
-          nc -zv ${{ env.UNS_mqtt.host }} ${{ env.UNS_mqtt.port }}
+          echo "$UNS_mqtt_host $UNS_mqtt_port $UNS_graphdb_url"
+          nc -zv $UNS_mqtt_host $UNS_mqtt_port
           nc -zv localhost 7687
-
+          nc -zv uns_graphdb 7687       
+          nc -zv uns_mqtt $UNS_mqtt_port
   job2:
     runs-on: ubuntu-latest
     needs: job1
