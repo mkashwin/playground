@@ -49,12 +49,12 @@ jobs:
           docker ps
           env
           echo "-----------------------------------------------"
-          echo "$UNS_mqtt_host $UNS_mqtt_port $UNS_graphdb_url"
+          echo "${UNS_mqtt.host} ${UNS.mqtt.port} ${UNS_graphdb.url}"
           echo "-----------------------------------------------"
-          nc -zv $UNS_mqtt_host $UNS_mqtt_port
+          nc -zv ${UNS_mqtt.host} ${UNS.mqtt.port}
           nc -zv localhost 7687
           nc -zv uns_graphdb 7687       
-          nc -zv uns_mqtt $UNS_mqtt_port
+          nc -zv uns_mqtt ${UNS_mqtt.port}
   job2:
     runs-on: ubuntu-latest
     needs: job1
