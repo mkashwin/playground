@@ -47,10 +47,12 @@ jobs:
           echo "-----------------------------------------------"
           echo "${{ env.UNS_graphdb.url }} ${{ env.UNS_mqtt.port }} ${{ env.UNS_mqtt.host }}"
           echo "-----------------------------------------------"
-          nc -zv ${{ env.UNS_mqtt.host }} ${{ env.UNS_mqtt.port }}
+
           nc -zv localhost 7687
+          nc -zv localhost 1883
+          
           nc -zv uns_graphdb 7687       
-          nc -zv uns_mqtt ${UNS_mqtt.port}
+          nc -zv uns_mqtt  1883
           
           netstat -ntpl
           ifconfig
