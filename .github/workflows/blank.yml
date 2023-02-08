@@ -47,4 +47,6 @@ jobs:
           docker ps
           # Step 5: Stop the docker container
           docker stop  uns_mqtt
-          docker stop  uns_graphdb        
+          docker stop  uns_graphdb       
+          netstat -ntpl
+          ifconfig
