@@ -47,9 +47,10 @@ jobs:
           netstat -ntpl
           ifconfig
           docker ps
-          nc -zv ${{ UNS_mqtt.host }} ${{ UNS_mqtt.port }}
+          nc -zv ${{ env.UNS_mqtt.host }} ${{ env.UNS_mqtt.port }}
           nc -zv localhost 7687
-          nc -zv uns_mqtt ${{ UNS_mqtt.port }}
+          nc -zv uns_mqtt ${{ env.
+          UNS_mqtt.port }}
           nc -zv uns_graphdb 7687
   job2:
     runs-on: ubuntu-latest
