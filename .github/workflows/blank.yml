@@ -47,7 +47,10 @@ jobs:
           netstat -ntpl
           ifconfig
           docker ps
+          env
+          echo "-----------------------------------------------"
           echo "$UNS_mqtt_host $UNS_mqtt_port $UNS_graphdb_url"
+          echo "-----------------------------------------------"
           nc -zv $UNS_mqtt_host $UNS_mqtt_port
           nc -zv localhost 7687
           nc -zv uns_graphdb 7687       
