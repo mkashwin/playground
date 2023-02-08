@@ -44,17 +44,18 @@ jobs:
         run: echo "test=world" >> $GITHUB_OUTPUT
       - id: step3
         run: |
-          netstat -ntpl
-          ifconfig
-          docker ps
-          env
           echo "-----------------------------------------------"
-          echo "${UNS_mqtt.host} ${UNS.mqtt.port} ${UNS_graphdb.url}"
+          echo "${{ env.UNS_graphdb.url }} ${{ env.UNS_mqtt.port }} ${{ env.UNS_mqtt.host }}"
           echo "-----------------------------------------------"
-          nc -zv ${UNS_mqtt.host} ${UNS.mqtt.port}
+          nc -zv ${{ env.UNS_mqtt.host }} ${{ env.UNS_mqtt.port }}
           nc -zv localhost 7687
           nc -zv uns_graphdb 7687       
           nc -zv uns_mqtt ${UNS_mqtt.port}
+          
+          netstat -ntpl
+          ifconfig
+          docker ps
+          env          
   job2:
     runs-on: ubuntu-latest
     needs: job1
