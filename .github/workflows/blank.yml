@@ -16,6 +16,7 @@ jobs:
       UNS_graphdb.url: "bolt://localhost:7687"
       UNS_graphdb.username: "neo4j"
       UNS_graphdb.password: $(openssl rand -base64 32 | tr -dc '[:alnum:]')
+      test_variable: "Hello World"
     services:
       uns_mqtt:
         image: emqx/emqx:latest
@@ -36,6 +37,7 @@ jobs:
     steps:
       - id: test_service
         run: |
+          echo "The value of the test_variable is: ${{ env.test_variable }}"
           echo "-----------------------------------------------"
           echo "${{ env.UNS_graphdb.url }} ${{ env.UNS_mqtt.port }} ${{ env.UNS_mqtt.host }}"
           
