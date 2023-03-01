@@ -37,6 +37,7 @@ jobs:
             BRANCH_NAME="${{ inputs.tag_name}}"
             git checkout -b $BRANCH_NAME
             git commit -m "Creating new branch: $BRANCH_NAME "
+            git push origin $BRANCH_NAME
           fi
           
           echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
