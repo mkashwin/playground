@@ -6,14 +6,7 @@ on:
         description: "Provide Tag name"
         type: text
         default: "v1.0.0-beta"
-        
-      force_tag:
-        description: "Force tag creation"
-        type: choice
-        default: "no"
-        options:
-          - "no"
-          - "yes"
+
 jobs:
   create-branch: 
     name: Create Branch
@@ -44,6 +37,7 @@ jobs:
             BRANCH_NAME="${{ inputs.tag_name}}"
             git checkout -b $BRANCH_NAME
             git commit -m "Creating new branch: $BRANCH_NAME "
+          fi
           
           echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
   
