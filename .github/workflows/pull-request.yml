@@ -49,7 +49,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          ref: ${{ needs.update-version.outputs.branch_name }}
+          ref: ${{ needs.create-branch.outputs.branch_name }}
           
       - name: Raise Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -57,6 +57,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: "Creating Pull Request"
           body: "This is a Pull Request to update version of artifacts"
-          labels: "${{ needs.update-version.outputs.branch_name }}"
-          base: "${{ needs.update-version.outputs.branch_name }}"
+          labels: "${{ needs.create-branch.outputs.branch_name }}"
+          base: "${{ needs.create-branch.outputs.branch_name }}"
           branch: main
