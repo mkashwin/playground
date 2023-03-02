@@ -58,5 +58,5 @@ jobs:
           title: "Creating Pull Request"
           body: "This is a Pull Request to update version of artifacts"
           labels: "${{ needs.create-branch.outputs.branch_name }}"
-          base: "${{ needs.create-branch.outputs.branch_name }}"
-          branch: main
+          branch: "${{ needs.create-branch.outputs.branch_name }}"
+          base: main
