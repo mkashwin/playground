@@ -49,7 +49,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          ref: ${{ needs.create-branch.outputs.branch_name }}         
+          ref: main         
       - name: Raise Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
