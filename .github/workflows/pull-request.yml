@@ -49,12 +49,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          ref: main
-          
-      - name: Reset promotion branch
-        run: |
-          git fetch origin main
-          git reset --hard main
+          ref: ${{ needs.create-branch.outputs.branch_name }}
           
       - name: Raise Pull Request
         uses: peter-evans/create-pull-request@v4
