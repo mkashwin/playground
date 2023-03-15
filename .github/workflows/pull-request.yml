@@ -53,7 +53,7 @@ jobs:
           
       - name: Reset promotion branch
         run: |
-          git fetch origin main:main
+          git fetch origin main
           git reset --hard main
           
       - name: Raise Pull Request
