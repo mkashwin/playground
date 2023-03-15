@@ -51,12 +51,20 @@ jobs:
         with:
           ref: ${{ needs.create-branch.outputs.branch_name }}
           
+ #     - name: Raise Pull Request
+ #       uses: peter-evans/create-pull-request@v4
+ #       with:
+ #         token: ${{ secrets.GITHUB_TOKEN }}
+ #         title: "Creating Pull Request"
+ #         body: "This is a Pull Request to update version of artifacts"
+ #         labels: "version-update"
+ #         branch: "${{ needs.create-branch.outputs.branch_name }}"
+ #         base: main
       - name: Raise Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: devops-infra/action-pull-request@v0.5.5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}        
+          target_branch: main
           title: "Creating Pull Request"
           body: "This is a Pull Request to update version of artifacts"
-          labels: "version-update"
-          branch: "${{ needs.create-branch.outputs.branch_name }}"
-          base: main
+          labels: "version-update,${{ inputs.tag_name}}"
