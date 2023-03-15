@@ -63,8 +63,10 @@ jobs:
       - name: Raise Pull Request
         uses: devops-infra/action-pull-request@v0.5.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}        
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: ${{ needs.create-branch.outputs.branch_name }}
           target_branch: main
           title: "Creating Pull Request"
           body: "This is a Pull Request to update version of artifacts"
-          label: "version-update,${{ inputs.tag_name}}"
+          label: "version-update"
+          get_diff: true
