@@ -67,4 +67,4 @@ jobs:
           target_branch: main
           title: "Creating Pull Request"
           body: "This is a Pull Request to update version of artifacts"
-          labels: "version-update,${{ inputs.tag_name}}"
+          label: "version-update,${{ inputs.tag_name}}"
