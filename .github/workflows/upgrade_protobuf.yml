@@ -66,15 +66,13 @@ jobs:
             done; 
             IFS=$OLDIFS
             pwd
-            ls
-            ls ..
-            ls ../protobuf
             cp -f bin/*  ../protobuf/bin/
             cp -rf include/  ../protobuf/ 
             echo -n ${latest_release} > ../protobuf/protobuf.version           
             cd ..
             rm -rf temp
-
+            echo "check folder"
+            ls -lrtR
             # Compile the proto file
             chmod +x ./protobuf/bin/protoc
 
