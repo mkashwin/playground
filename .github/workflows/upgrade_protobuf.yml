@@ -50,8 +50,10 @@ jobs:
             cd temp
             OLDIFS=$IFS; 
             IFS=','; 
+            echo "Architecture+
+            arch
             # Download 3 executables, rename them with proper suffix 
-            for i in linux-aarch_64,"" win64,"" osx-aarch_64,_osx; 
+            for i in linux-x86_64,"" win64,"" osx-aarch_64,_osx; 
                 do set -- $i;
                 echo https://github.com/protocolbuffers/protobuf/releases/download/${latest_release}/protoc-${latest_release:1}-${1}.zip
                 wget -q https://github.com/protocolbuffers/protobuf/releases/download/${latest_release}/protoc-${latest_release:1}-${1}.zip
