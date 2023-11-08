@@ -31,7 +31,7 @@ Where in:
 ## Preparation steps required to setup protocol buffer and SparkplugB dependencies
 1. **Step 1**: Download or install protoc. Refer 
     - [Installing on Linux/MacOs](https://grpc.io/docs/protoc-installation/)
-    - [Install pre-compiled version](https://github.com/protocolbuffers/protobuf/releases). This project currently is using version  [Protocol Buffers v3.19.4](https://github.com/protocolbuffers/protobuf/releases/tag/v3.19.4) 
+    - [Install pre-compiled version](https://github.com/protocolbuffers/protobuf/releases). This project currently is using version  [Protocol Buffers v21.12](https://github.com/protocolbuffers/protobuf/releases/tag/v21.12) 
     and downloaded the pre-compiled versions for  linux-x86_64 and win64. For other platforms please replace with the appropriate runtime or compile the runtime directly
 1. **Step 2**: Copy the [SparkPlugB protocol buffer specification](https://github.com/eclipse/tahu/tree/master/sparkplug_b/sparkplug_b.proto) from [Eclipse Tahu project](https://github.com/eclipse/tahu/tree/master/sparkplug_b) to the folder [./sparkplug_b](./sparkplug_b/)
 1. **Step 3**: Compile the SparkplugB protocol buffer into python class by the following command
