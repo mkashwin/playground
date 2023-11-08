@@ -65,7 +65,10 @@ jobs:
 
             done; 
             IFS=$OLDIFS
-
+            pwd
+            ls
+            ls ..
+            ls ../protobuf
             cp -f bin/*  ../protobuf/bin/
             cp -rf include/  ../protobuf/ 
             echo -n ${latest_release} > ../protobuf/protobuf.version           
