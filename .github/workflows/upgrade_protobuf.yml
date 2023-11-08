@@ -16,7 +16,8 @@ jobs:
           id: check_release
           run: |
             latest_release=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r '.tag_name')
-            current_protobuf_rel=$(cat 02_mqtt-cluster\protobuf\protobuf.version)
+            pwd
+            current_protobuf_rel=$(cat 02_mqtt-cluster/protobuf/protobuf.version)
             if [[ "$current_protobuf_rel" != "$latest_release" ]]; then
                 echo "::set-output name=new_release::true"
                 echo "::set-output name=${latest_release}"
