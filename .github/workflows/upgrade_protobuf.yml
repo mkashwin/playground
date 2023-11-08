@@ -16,14 +16,13 @@ jobs:
           id: check_release
           run: |
             latest_release=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r '.tag_name')
-            pwd
             current_protobuf_rel=$(cat 02_mqtt-cluster/protobuf/protobuf.version)
             if [[ "$current_protobuf_rel" != "$latest_release" ]]; then
-                echo "::set-output name=new_release::true"
-                echo "::set-output name=${latest_release}"
-                echo "::set-output name=${current_protobuf_rel}"
+              echo "new_release=true"  >> $GITHUB_STATE
+              echo "latest_release=${latest_release}"  >> $GITHUB_STATE
+              echo "current_protobuf_rel=${current_protobuf_rel}"  >> $GITHUB_STATE
             else
-                echo "::set-output name=new_release::false"
+              echo "new_release=false"  >> $GITHUB_STATE
             fi
         - name: Create New Branch
           id: create_branch
