@@ -35,7 +35,7 @@ jobs:
             git config --global user.name "Github Actions"
             BRANCH_NAME="features/upgrade_protobuf_to_${{env.latest_release}}"
             git checkout -b $BRANCH_NAME
-            git push origin
+            git push origin $BRANCH_NAME
 
         - name: Download and Extract Release
           if: steps.check_release.outputs.new_release == 'true'
