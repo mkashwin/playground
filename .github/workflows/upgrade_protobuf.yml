@@ -77,7 +77,7 @@ jobs:
             # Compile the proto file
             chmod +x ./protobuf/bin/protoc
 
-            ./protobuf/bin/protoc -I ./sparkplug_b/  --python_out=./src/uns_sparkplugb/generated --pyi_out=./src/uns_sparkplugb/generate ./sparkplug_b/sparkplug_b.proto
+            ./protobuf/bin/protoc -I ./sparkplug_b/  --python_out=./src/uns_sparkplugb/generated --pyi_out=./src/uns_sparkplugb/generated ./sparkplug_b/sparkplug_b.proto
             
             # Update README.md with new version
             sed -i -e s/${current_protobuf_rel}/${latest_release}/g README.md
