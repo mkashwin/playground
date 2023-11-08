@@ -62,12 +62,11 @@ jobs:
                 if [[ -f bin/protoc && -n ${2} ]] ; then
                     mv bin/protoc bin/protoc${2}
                 fi
-
+                cp -f bin/*  ../protobuf/bin/
+                cp -rf include/  ../protobuf/ 
             done; 
             IFS=$OLDIFS
             pwd
-            cp -f bin/*  ../protobuf/bin/
-            cp -rf include/  ../protobuf/ 
             echo -n ${latest_release} > ../protobuf/protobuf.version           
             cd ..
             rm -rf temp
