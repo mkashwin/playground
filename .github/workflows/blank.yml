@@ -9,55 +9,14 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    env:
-      UNS_mqtt__host: "localhost"
-      UNS_mqtt__port: 1883
-      UNS_graphdb__url: "bolt://localhost:7687"
-      UNS_graphdb__username: "neo4j"
-      UNS_graphdb__password: $(openssl rand -base64 32 | tr -dc '[:alnum:]')
-      test_variable: "Hello World"
-    services:
-      uns_mqtt:
-        image: emqx/emqx:latest
-        ports:
-          - "1883:1883"
-          - "8083:8083"
-      uns_graphdb:
-        image: neo4j:latest
-        ports:
-          - "7474:7474"
-          - "7687:7687"
-        env: 
-          NEO4J_AUTH: neo4j/${{ env.UNS_graphdb__password }}
-          apoc.export.file.enabled: true
-          apoc.import.file.enabled: true
-          apoc.import.file.use_neo4j_config: true
-          NEO4J_PLUGINS: '["apoc"]'
-    steps:
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v3
+      
+      - name: Setup with python environment
+        uses: ./.github/include/setup_python.yml
         with:
-          python-version: "3.10"
-      - id: test_service
-        run: |
-          echo "The value of the test_variable is: ${{ env.test_variable }}"
-          echo "-----------------------------------------------"
-          echo "${{ env.UNS_graphdb__url }} ${{ env.UNS_mqtt__port }} ${{ env.UNS_mqtt__host }}"
-          
-          echo "env.UNS_graphdb.url: $UNS_graphdb__url"
-          echo "env.UNS_graphdb.url: $UNS_graphdb_url"
-          
-          echo "-----------------------------------------------"
-
-          nc -zv localhost 7687
-          nc -zv localhost 1883
-          
-          nc -zv uns_graphdb 7687       
-          nc -zv uns_mqtt  1883
-          
-          netstat -ntpl
-          ifconfig
-          docker ps
-          env          
-
+          module: 07_uns_graphql
+      - name: Test with pytest
+        uses: ./.github/include/test1.yml
+        with:
+          module: 07_uns_graphql
+          integration_tests: true
