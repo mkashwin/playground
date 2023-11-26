@@ -2,9 +2,7 @@ name: Setup Python Environment, dependencies and static checks
 inputs:
   module:
     description: 'the actual module on which the tests should run. "" empty for all modules'
-    required: True
     default: ""
-  integration_tests:
 
 runs:
   using: "composite"
