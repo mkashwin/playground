@@ -14,9 +14,9 @@ jobs:
       - name: Setup with python environment
         uses: ./.github/include/setup_python.yml
         with:
-          module: 07_uns_graphql
+          module: ""
       - name: Test with pytest
         uses: ./.github/include/test1.yml
         with:
-          module: 07_uns_graphql
+          module: ""
           integration_tests: true
