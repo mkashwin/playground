@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "test"
+version = "0.0.1"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+logger = "^1.4"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+yapf = "^0.40.2"
+pytest-cov = "^4.0.0"
+safety = "^2.3.5"
+ruff = "^0.1.6"
