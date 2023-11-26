@@ -9,14 +9,16 @@ on:
 
 jobs:
   job1:
-      - uses: actions/checkout@v3
-      
-      - name: Setup with python environment
-        uses: ./.github/include/setup_python.yml
-        with:
-          module: ""
-      - name: Test with pytest
-        uses: ./.github/include/test1.yml
-        with:
-          module: ""
-          integration_tests: true
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        
+        - name: Setup with python environment
+          uses: ./.github/include/setup_python.yml
+          with:
+            module: ""
+        - name: Test with pytest
+          uses: ./.github/include/test1.yml
+          with:
+            module: ""
+            integration_tests: true
